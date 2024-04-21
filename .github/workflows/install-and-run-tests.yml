@@ -22,3 +22,5 @@ jobs:
       run: cd up-path-gen && cargo test --verbose
     - name: Run setup
       run: ./setup.sh
+    - name: Run e2e tests
+      run: cd tests && . ./simple-usages.sh
