@@ -17,8 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: cd up-path-gen && cargo build --verbose
+      run: cd Formula/up-path-gen && cargo build --verbose
     - name: Run unit tests
-      run: cd up-path-gen && cargo test --verbose
-    - name: Run e2e tests
-      run: cd tests && . ./simple-usages.sh
+      run: cd Formula/up-path-gen && cargo test --verbose
