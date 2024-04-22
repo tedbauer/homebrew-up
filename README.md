@@ -4,21 +4,21 @@ Jump up multiple directory levels.
 
 ```bash
 $ pwd
-/simple/path/one/two/three
-$ up one
+/simple/path/example/hello/world
+$ up example
 $ pwd
-/simple/path/one
+/simple/path/example
 ```
 
 ```bash
 $ pwd
-/simple/path/one/two/three/one/two
-$ up one
+/simple/path/example/hello/world/example/another
+$ up eample
 $ pwd
-/simple/path/one/two/three/one
+/simple/path/example/hello/world/example
 ```
 
 ## Install
 ```bash
-./setup.sh
+./install.sh && echo "alias up=\". /usr/local/lib/up\"" > ~/.zshrc
 ```

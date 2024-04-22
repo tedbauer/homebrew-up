@@ -1,7 +1,7 @@
 # up must be installed before invoking this
 
 cd ..
-. ./setup.sh
+./install.sh
 
 cd ~
 base_dir=$(pwd)

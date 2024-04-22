@@ -6,4 +6,3 @@ chmod +x /usr/local/lib/up-path-gen
 cd ..
 sudo cp up.sh /usr/local/lib/up
 sudo chmod +x /usr/local/lib/up
-alias up=". /usr/local/lib/up"
