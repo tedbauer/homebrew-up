@@ -2,10 +2,22 @@ use std::env;
 
 // Given a string of the form /a/b/c/def, and arg, find the index of the _last_ substring of arg. Return that, up til the next /.
 fn generate_path(working_dir: &str, arg: &str) -> Option<String> {
-    match working_dir.rfind(arg) {
-        Some(index) => Some(working_dir[..index + arg.len()].to_string()),
-        None => None,
-    }
+    let start_index = match working_dir.rfind(arg) {
+        Some(index) => index,
+        None => return None,
+    };
+
+    let end_index = match working_dir
+        .char_indices()
+        .skip(start_index + 1)
+        .find(|&(_, c)| c == '/')
+        .map(|(i, _)| i)
+    {
+        Some(index) => index,
+        None => return None,
+    };
+
+    Some(working_dir[..end_index].to_string())
 }
 
 fn main() {
@@ -47,6 +59,14 @@ mod tests {
         assert_eq!(
             Some("/simple/path/one/two/three/one".to_string()),
             generate_path("/simple/path/one/two/three/one/two", "one")
+        );
+    }
+
+    #[test]
+    fn generate_path_matches_partial_substring() {
+        assert_eq!(
+            Some("/simple/path/longerstring".to_string()),
+            generate_path("/simple/path/longerstring/more/text/hello", "longe")
         );
     }
 }

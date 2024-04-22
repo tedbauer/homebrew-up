@@ -18,6 +18,14 @@ $ pwd
 /simple/path/example/hello/world/example
 ```
 
+```bash
+$ pwd
+/simple/path/example/hello/longerstring/example/another
+$ up lon
+$ pwd
+/simple/path/example/hello/longerstring
+```
+
 ## Install
 ```bash
 ./install.sh && echo "alias up=\". /usr/local/lib/up\"" > ~/.zshrc
