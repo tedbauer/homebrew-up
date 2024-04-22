@@ -28,9 +28,11 @@ $ pwd
 
 ## Install
 ```bash
-sudo curl https://raw.githubusercontent.com/tedbauer/up/main/up.sh > /usr/local/lib/up && \
+curl https://raw.githubusercontent.com/tedbauer/up/main/up.sh > /tmp/up && \
+sudo mv /tmp/up /usr/local/lib/up && \
 sudo chmod +x /usr/local/lib/up && \
-sudo curl https://github.com/tedbauer/up/raw/main/bin/up-path-gen > /usr/local/lib/up-path-gen && \
+curl https://github.com/tedbauer/up/raw/main/bin/up-path-gen > /tmp/up-path-gen && \
+sudo mv /tmp/up-path-gen /usr/local/lib/up-path-gen && \
 chmod +x /usr/local/lib/up-path-gen && \
 echo "alias up=\". /usr/local/lib/up\"" > ~/.zshrc && source ~/.zshrc
 ```
