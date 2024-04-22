@@ -28,5 +28,9 @@ $ pwd
 
 ## Install
 ```bash
-./install.sh && echo "alias up=\". /usr/local/lib/up\"" > ~/.zshrc && source ~/.zshrc
+sudo curl https://raw.githubusercontent.com/tedbauer/up/main/up.sh > /usr/local/lib/up && \
+sudo chmod +x /usr/local/lib/up && \
+sudo curl https://github.com/tedbauer/up/raw/main/bin/up-path-gen > /usr/local/lib/up-path-gen && \
+chmod +x /usr/local/lib/up-path-gen && \
+echo "alias up=\". /usr/local/lib/up\"" > ~/.zshrc && source ~/.zshrc
 ```
