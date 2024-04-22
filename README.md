@@ -13,7 +13,7 @@ $ pwd
 ```bash
 $ pwd
 /simple/path/example/hello/world/example/another
-$ up eample
+$ up example
 $ pwd
 /simple/path/example/hello/world/example
 ```
