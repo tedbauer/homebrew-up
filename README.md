@@ -28,5 +28,5 @@ $ pwd
 
 ## Install
 ```bash
-./install.sh && echo "alias up=\". /usr/local/lib/up\"" > ~/.zshrc
+./install.sh && echo "alias up=\". /usr/local/lib/up\"" > ~/.zshrc && source ~/.zshrc
 ```
