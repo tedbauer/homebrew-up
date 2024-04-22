@@ -9,19 +9,23 @@ fn generate_path(working_dir: &str, arg: &str) -> Option<String> {
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    if args.len() < 2 {
-        return;
-    }
-    let path = &args[1];
 
     let working_dir = match env::current_dir() {
         Ok(path) => path,
         Err(error) => panic!("Problem getting current directory: {}", error),
     };
-
     let current_dir_string = working_dir.to_string_lossy().to_string();
+
+    if args.len() < 2 {
+        println!("{current_dir_string}");
+        return;
+    }
+
+    let path = &args[1];
     if let Some(path) = generate_path(&current_dir_string, path) {
         println!("{path}");
+    } else {
+        println!("{current_dir_string}")
     }
 }
 

@@ -33,5 +33,14 @@ else
     echo "✅ \`up\` produces no output"
 fi
 
+. /usr/local/lib/up notpresent
+
+if [[ "$PWD" != $base_dir/test/one ]]; then 
+    echo "Expected: '$base_dir/test/one'; actual: '$PWD'"
+    exit 1
+else
+    echo "✅ non-existent path supplied does not affect path"
+fi
+
 rm -rf ~/test
 echo "🥂 Test suite passed"
