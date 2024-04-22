@@ -1,6 +1,5 @@
 use std::env;
 
-// Given a string of the form /a/b/c/def, and arg, find the index of the _last_ substring of arg. Return that, up til the next /.
 fn generate_path(working_dir: &str, arg: &str) -> Option<String> {
     let start_index = match working_dir.rfind(arg) {
         Some(index) => index,
