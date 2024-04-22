@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build
       run: cd up-path-gen && cargo build --verbose
-    - name: Run tests
+    - name: Run unit tests
       run: cd up-path-gen && cargo test --verbose
     - name: Run e2e tests
       run: cd tests && . ./simple-usages.sh
