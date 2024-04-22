@@ -16,7 +16,7 @@ if [[ "$PWD" != $base_dir/test/one/two/three ]]; then
     exit 1
 fi
 
-up one
+. /usr/local/lib/up one
 
 if [[ "$PWD" != $base_dir/test/one ]]; then 
     echo "Expected: '$base_dir/test/one'; actual: '$PWD'"
@@ -25,7 +25,7 @@ else
     echo "✅ simple usage succeeds"
 fi
 
-output=$(up)
+output=$(. /usr/local/lib/up)
 
 if [ -n "$output" ]; then
     exit 1
