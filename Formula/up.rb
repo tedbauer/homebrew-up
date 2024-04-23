@@ -32,9 +32,14 @@ class Up < Formula
         lib.install "up.sh"
       end
     end
+    
     def caveats; <<~EOS
     To use the 'up' command, add the following alias to your shell configuration:
       alias up='. /usr/local/lib/up.sh'
     EOS
+    end
+
+    def post_install
+      ln_s Dir["#{HOMEBREW_PREFIX}/Cellar/up/0.1.0/*"], "#{HOMEBREW_PREFIX}/lib"
     end
 end
