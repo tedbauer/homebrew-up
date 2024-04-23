@@ -5,6 +5,7 @@ class Up < Formula
     version "0.1.0"
   
     def install
+      puts Dir.pwd
       cd "up-path-gen" do
         system "cargo", "build", "--release"
         lib.install "target/release/up-path-gen"
