@@ -39,10 +39,11 @@ class Up < Formula
     EOS
     end
 
-    def post_install
-      # Assuming you want to link all files within the formula's lib directory
-      Dir.glob("#{lib}/**/*").each do |file|
-        ln_sf file, "/usr/local/lib/#{File.basename(file)}"
-      end
+def post_install
+    puts "Linking files..." # Add a message
+    Dir.glob("#{lib}/**/*").each do |file|
+      puts "Linking: #{file}" # See what's being linked
+      ln_sf file, "/usr/local/lib/#{File.basename(file)}"
     end
+end
 end
