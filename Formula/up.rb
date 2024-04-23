@@ -17,7 +17,9 @@ class Up < Formula
           Please install Rust from: https://www.rust-lang.org/tools/install
         EOS
       end
-        
+
+      ENV["PATH"] = "#{cargo_path}:#{ENV['PATH']}"  
+
       formula_path = Pathname.new(__FILE__).expand_path
       up_path_gen_dir = formula_path.dirname.join("up-path-gen")
       cd up_path_gen_dir do
