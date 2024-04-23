@@ -5,9 +5,13 @@ class Up < Formula
     version "0.1.0"
   
     def install
-      puts "hi"
-      puts ENV["PATH"]
-      unless which("cargo") 
+      potential_cargo_paths = [
+        "/home/#{ENV['USER']}/.cargo/bin", # Common user-level installation 
+        "#{HOMEBREW_PREFIX}/opt/rust/bin"  # Possible Homebrew Rust location
+      ]
+
+      cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }        
+      unless cargo_path
         odie <<~EOS 
           Cargo (the Rust package manager) is required to install 'up'.
           Please install Rust from: https://www.rust-lang.org/tools/install
