@@ -7,8 +7,6 @@ class Up < Formula
     def install
       formula_path = Pathname.new(__FILE__).expand_path
       up_path_gen_dir = formula_path.dirname.join("up-path-gen")
-      puts "Hello"
-      puts up_path_gen_dir
       cd up_path_gen_dir do
         system "cargo", "build", "--release"
         lib.install "target/release/up-path-gen"
