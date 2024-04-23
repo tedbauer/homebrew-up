@@ -28,10 +28,9 @@ class Up < Formula
         lib.install "target/release/up-path-gen"
       end
 
-      puts "hi"
-      system "ls" 
-  
-      lib.install "up.sh"
+      cd formula_path do
+        lib.install "up.sh"
+      end
     end
     def caveats; <<~EOS
     To use the 'up' command, add the following alias to your shell configuration:
