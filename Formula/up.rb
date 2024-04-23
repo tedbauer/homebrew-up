@@ -40,7 +40,9 @@ class Up < Formula
     end
 
     def post_install
-      (lib/"up-path-gen").make_relative_symlink(prefix/"Cellar/up/0.1.0/lib/up-path-gen")
-      (lib/"up.sh").make_relative_symlink(prefix/"Cellar/up/0.1.0/lib/up.sh")
+      # Assuming you want to link all files within the formula's lib directory
+      Dir.glob("#{lib}/**/*").each do |file|
+        ln_sf file, "/usr/local/lib/#{File.basename(file)}"
+      end
     end
 end
