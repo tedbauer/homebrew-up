@@ -5,6 +5,8 @@ class Up < Formula
     version "0.1.0"
   
     def install
+      puts "hi"
+      puts ENV["PATH"]
       unless which("cargo") 
         odie <<~EOS 
           Cargo (the Rust package manager) is required to install 'up'.
