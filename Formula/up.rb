@@ -2,6 +2,7 @@ class Up < Formula
     desc "Jump up multiple directories"
     homepage "https://github.com/tedbauer/up" 
     url "https://github.com/tedbauer/up/" # Replace with release tag URL
+    version "0.1.0"
   
     def install
       cd "up-path-gen" do
@@ -16,4 +17,4 @@ class Up < Formula
       alias up='. /usr/local/lib/up.sh'
     EOS
     end
-  end
+end
