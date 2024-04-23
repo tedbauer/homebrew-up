@@ -1,12 +1,14 @@
 class Up < Formula
     desc "Jump up multiple directories"
     homepage "https://github.com/tedbauer/up" 
-    url "https://github.com/tedbauer/up/" # Replace with release tag URL
+    url "https://github.com/tedbauer/up/"
     version "0.1.0"
   
     def install
-      puts Dir.pwd
-      cd "up-path-gen" do
+      formula_path = Pathname.new(__FILE__).expand_path
+      up_path_gen_dir = formula_path.dirname.join("up-path-gen")
+      cd up_path_gen_dir do
+        puts Dir.pwd
         system "cargo", "build", "--release"
         lib.install "target/release/up-path-gen"
       end
