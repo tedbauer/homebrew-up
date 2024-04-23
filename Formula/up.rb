@@ -3,6 +3,8 @@ class Up < Formula
     homepage "https://github.com/tedbauer/up" 
     url "https://github.com/tedbauer/up/"
     version "0.1.0"
+
+    depends_on "rust"
   
     def install
       formula_path = Pathname.new(__FILE__).expand_path
