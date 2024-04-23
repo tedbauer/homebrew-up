@@ -27,6 +27,9 @@ class Up < Formula
         system "cargo", "build", "--release"
         lib.install "target/release/up-path-gen"
       end
+
+      puts "hi"
+      system "ls" 
   
       lib.install "up.sh"
     end
