@@ -28,7 +28,7 @@ class Up < Formula
         lib.install "target/release/up-path-gen"
       end
 
-      cd formula_path do
+      cd formula_path.dirname do
         lib.install "up.sh"
       end
     end
