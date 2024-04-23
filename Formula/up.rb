@@ -40,6 +40,7 @@ class Up < Formula
     end
 
     def post_install
-      ln_s Dir["#{HOMEBREW_PREFIX}/Cellar/up/0.1.0/*"], "#{HOMEBREW_PREFIX}/lib"
+      (lib/"up-path-gen").make_relative_symlink(prefix/"Cellar/up/0.1.0/lib/up-path-gen")
+      (lib/"up.sh").make_relative_symlink(prefix/"Cellar/up/0.1.0/lib/up.sh")
     end
 end
