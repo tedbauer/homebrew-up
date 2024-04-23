@@ -23,6 +23,7 @@ class Up < Formula
       formula_path = Pathname.new(__FILE__).expand_path
       up_path_gen_dir = formula_path.dirname.join("up-path-gen")
       cd up_path_gen_dir do
+        system "rustup", "override", "set", "stable"
         system "cargo", "build", "--release"
         lib.install "target/release/up-path-gen"
       end
