@@ -1,6 +1,6 @@
 # 🦘 up
 
-`up` is a humble utility to easily jump up multiple directories.
+`up` is a humble utility to help you easily jump up multiple directories.
 
 ```bash
 $ pwd
