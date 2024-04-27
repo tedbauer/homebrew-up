@@ -4,7 +4,7 @@ binary_path="$(brew --prefix)/lib/up-path-gen"
 
 up() {
   if [ $# -eq 0 ]; then
-    echo "Usage: up <argument>"
+    echo "Usage: up <path|path-prefix>"
     return 1
   fi
 
