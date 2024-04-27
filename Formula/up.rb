@@ -10,13 +10,13 @@ class Up < Formula
         "#{HOMEBREW_PREFIX}/opt/rust/bin"  # Possible Homebrew Rust location
       ]
 
-      cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }        
-      unless cargo_path
-        odie <<~EOS 
-          Cargo (the Rust package manager) is required to install 'up'.
-          Please install Rust from: https://www.rust-lang.org/tools/install
-        EOS
-      end
+      # cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }        
+      # unless cargo_path
+        # odie <<~EOS 
+          # Cargo (the Rust package manager) is required to install 'up'.
+          # Please install Rust from: https://www.rust-lang.org/tools/install
+        # EOS
+      # end
 
       ENV["PATH"] = "#{cargo_path}:#{ENV['PATH']}"  
 
