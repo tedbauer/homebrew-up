@@ -34,16 +34,9 @@ class Up < Formula
     end
     
     def caveats; <<~EOS
-    To use the 'up' command, add the following alias to your shell configuration:
-      alias up='. /usr/local/lib/up.sh'
+    To use the 'up' command, source this script in your shell profile:
+      source #{HOMEBREW_PREFIX}/lib/up.sh
     EOS
     end
 
-def post_install
-    puts "Linking files..." # Add a message
-    Dir.glob("#{lib}/**/*").each do |file|
-      puts "Linking: #{file}" # See what's being linked
-      ln_sf file, "/usr/local/lib/#{File.basename(file)}"
-    end
-end
 end

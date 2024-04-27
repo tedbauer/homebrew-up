@@ -1,2 +1,8 @@
-TARGET_DIR=$(/usr/local/lib/up-path-gen $1)
-cd $TARGET_DIR
+#!/bin/bash
+
+binary_path="$(brew --prefix)/lib/up-path-gen"
+
+up() {
+  path="$binary_path" "$@"
+  cd $path
+}
