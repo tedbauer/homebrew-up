@@ -10,6 +10,7 @@ class Up < Formula
         "#{HOMEBREW_PREFIX}/opt/rust/bin"  # Possible Homebrew Rust location
       ]
 
+      cargo_path = "/Users/kt/.cargo/bin/cargo"
       # cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }        
       # unless cargo_path
         # odie <<~EOS 
