@@ -8,8 +8,9 @@ up() {
     return 1
   fi
 
-  target_path="$1"
-  full_command="$binary_path $target_path"
-
-  "$full_command"
+  target="$1"
+  full_command="$binary_path $target"
+  
+  target_path=$($full_command)
+  cd "$target_path"
 }
