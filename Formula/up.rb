@@ -11,21 +11,20 @@ class Up < Formula
         "#{HOMEBREW_PREFIX}/opt/rust/bin"  # Possible Homebrew Rust location
       ]
 
-      # cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }
-      cargo_path = "/Users/kt/.cargo/bin/cargo"
-      # unless cargo_path
-        # odie <<~EOS 
-          # Cargo (the Rust package manager) is required to install 'up'.
-          # Please install Rust from: https://www.rust-lang.org/tools/install
-        # EOS
-      # end
+      cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }
+      unless cargo_path
+        odie <<~EOS 
+          Cargo (the Rust package manager) is required to install 'up'.
+          Please install Rust from: https://www.rust-lang.org/tools/install
+        EOS
+      end
 
       ENV["PATH"] = "#{cargo_path}:#{ENV['PATH']}"  
 
       formula_path = Pathname.new(__FILE__).expand_path
       up_path_gen_dir = formula_path.dirname.join("up-path-gen")
       cd up_path_gen_dir do
-        # system "rustup", "override", "set", "stable"
+        system "rustup", "override", "set", "stable"
         system "cargo", "build", "--release"
         lib.install "target/release/up-path-gen"
       end
