@@ -1,6 +1,6 @@
 # 🦘 up
 
-Jump up multiple directory levels.
+A 
 
 ```bash
 $ pwd
@@ -24,4 +24,13 @@ $ pwd
 $ up lon
 $ pwd
 /simple/path/example/hello/longerstring
+```
+
+## Installation
+
+With [Homebrew](https://brew.sh/):
+
+```shell
+brew tap tedbauer/homebrew-up
+brew install tedbauer/homebrew-up/up
 ```
