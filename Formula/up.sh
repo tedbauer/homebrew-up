@@ -1,10 +1,10 @@
 #!/bin/bash
 
-binary_path="$(brew --prefix)/lib/up-path-gen"
+# binary_path="$(brew --prefix)/lib/up-path-gen"
 
 up_completion() {
-    completions=$($binary_path --complete $COMP_CWORD)
-    echo -e "$completions"
+    completions=$($BINARY_PATH --complete $COMP_CWORD $COMP_LINE)
+    COMPREPLY=($completions)
 }
 
 up() {
@@ -14,7 +14,7 @@ up() {
   fi
 
   target="$1"
-  full_command="$binary_path $target"
+  full_command="$BINARY_PATH $target"
   
   target_path=$($full_command)
   cd "$target_path"

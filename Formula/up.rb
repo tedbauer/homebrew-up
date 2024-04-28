@@ -5,13 +5,20 @@ class Up < Formula
     version "0.1.0"
   
     def install
+
+        # Check for CARGO_HOME environment variable
+        cargo_path = ENV["CARGO_HOME"] ? "#{ENV["CARGO_HOME"]}/bin/cargo" : nil
+
+  # Fallback: Check for Homebrew-managed Cargo (if applicable)
+  unless cargo_path
+    cargo_path = "#{HOMEBREW_PREFIX}/opt/rust/bin/cargo" if OS.mac?
+  end
       potential_cargo_paths = [
-        "/opt/homebrew/bin", # macOS installation
         "/home/#{ENV['USER']}/.cargo/bin", # Common user-level installation 
         "#{HOMEBREW_PREFIX}/opt/rust/bin"  # Possible Homebrew Rust location
       ]
 
-      cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }
+      cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }        
       unless cargo_path
         odie <<~EOS 
           Cargo (the Rust package manager) is required to install 'up'.
@@ -28,6 +35,8 @@ class Up < Formula
         system "cargo", "build", "--release"
         lib.install "target/release/up-path-gen"
       end
+
+      ENV["BINARY_PATH"] = "#{lib}/up-path-gen"
 
       cd formula_path.dirname do
         lib.install "up.sh"

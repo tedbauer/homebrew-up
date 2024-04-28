@@ -1,11 +1,32 @@
 use std::env;
 
-fn generate_completion_options(working_dir: &str, arg: &str) -> Vec<String> {
-    vec![
-        "apple".to_string(),
-        "banana".to_string(),
-        "cherry".to_string(),
-    ]
+fn generate_completion_options(working_dir: &str, arg: &str, comp_cword: usize) -> Vec<String> {
+    if comp_cword > 1 {
+        return vec![];
+    }
+
+    let directories = working_dir
+        .split('/')
+        .map(|s| String::from(s))
+        .collect::<Vec<String>>();
+
+    let arg = match arg.split(" ").nth(1) {
+        Some(arg) => arg,
+        None => return directories,
+    };
+
+    let mut result = Vec::new();
+    for (_, directory) in directories.iter().enumerate() {
+        if directory.starts_with(arg) {
+            result.push(directory.to_string());
+        }
+    }
+
+    if result.is_empty() {
+        directories
+    } else {
+        result
+    }
 }
 
 fn generate_path(working_dir: &str, arg: &str) -> Option<String> {
@@ -42,8 +63,16 @@ fn main() {
     }
 
     if &args[1] == "--complete" {
-        let completions = generate_completion_options(&current_dir_string, &args[2]);
-        let completion_string = completions.join("\n");
+        let completions = generate_completion_options(
+            &current_dir_string,
+            &args[3..]
+                .iter()
+                .map(|s| String::from(s))
+                .collect::<Vec<String>>()
+                .join(" "),
+            args[2].parse::<usize>().unwrap(),
+        );
+        let completion_string = completions.join(" ");
         println!("{completion_string}");
         return;
     }
