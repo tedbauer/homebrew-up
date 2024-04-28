@@ -45,7 +45,7 @@ class Up < Formula
     
     def caveats; <<~EOS
     To use the 'up' command, source this script in your shell profile:
-      source #{HOMEBREW_PREFIX}/lib/up.sh
+      export BINARY_PATH=$(brew --prefix)/lib/up-path-gen && source #{HOMEBREW_PREFIX}/lib/up.sh
     EOS
     end
 
