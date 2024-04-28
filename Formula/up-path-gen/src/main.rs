@@ -1,5 +1,13 @@
 use std::env;
 
+fn generate_completion_options(working_dir: &str, arg: &str) -> Vec<String> {
+    vec![
+        "apple".to_string(),
+        "banana".to_string(),
+        "cherry".to_string(),
+    ]
+}
+
 fn generate_path(working_dir: &str, arg: &str) -> Option<String> {
     let start_index = match working_dir.rfind(arg) {
         Some(index) => index,
@@ -30,6 +38,13 @@ fn main() {
 
     if args.len() < 2 {
         println!("{current_dir_string}");
+        return;
+    }
+
+    if &args[1] == "--complete" {
+        let completions = generate_completion_options(&current_dir_string, &args[2]);
+        let completion_string = completions.join("\n");
+        println!("{completion_string}");
         return;
     }
 
