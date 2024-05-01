@@ -34,7 +34,7 @@ class Up < Formula
       up_path_gen_dir = formula_path.dirname.join("up-path-gen")
       cd up_path_gen_dir do
         system "rustup", "override", "set", "stable"
-        system "cargo", "build", "--release" "-vv"
+        system "cargo", "build", "--release" " -vv"
         lib.install "target/release/up-path-gen"
       end
 
