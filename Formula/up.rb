@@ -15,7 +15,7 @@ class Up < Formula
   end
       potential_cargo_paths = [
         "/home/#{ENV['USER']}/.cargo/bin", # Common user-level installation 
-        "#{HOMEBREW_PREFIX}/opt/rust/bin"  # Possible Homebrew Rust location
+        "#{HOMEBREW_PREFIX}/opt/rust/bin",  # Possible Homebrew Rust location
         "/Users/#{ENV['USER']}/.cargo/bin" # Common installation on OSX
       ]
 
