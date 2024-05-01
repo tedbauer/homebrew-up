@@ -16,6 +16,7 @@ class Up < Formula
       potential_cargo_paths = [
         "/home/#{ENV['USER']}/.cargo/bin", # Common user-level installation 
         "#{HOMEBREW_PREFIX}/opt/rust/bin"  # Possible Homebrew Rust location
+        "/Users/#{ENV['USER']}/.cargo/bin" # Common installation on OSX
       ]
 
       cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }        
@@ -23,6 +24,7 @@ class Up < Formula
         odie <<~EOS 
           Cargo (the Rust package manager) is required to install 'up'.
           Please install Rust from: https://www.rust-lang.org/tools/install
+          Make sure it is installed for the current user.
         EOS
       end
 
