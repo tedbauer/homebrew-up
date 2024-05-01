@@ -2,7 +2,7 @@
 
 `up` is a humble utility to help you easily jump up multiple directories.
 
-![recording](./recording.gif)
+![recording](./recording-zoomed.gif)
 
 ## Installation
 
