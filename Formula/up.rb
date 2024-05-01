@@ -5,14 +5,14 @@ class Up < Formula
     version "0.1.0"
   
     def install
+      # Check for CARGO_HOME environment variable
+      cargo_path = ENV["CARGO_HOME"] ? "#{ENV["CARGO_HOME"]}/bin/cargo" : nil
 
-        # Check for CARGO_HOME environment variable
-        cargo_path = ENV["CARGO_HOME"] ? "#{ENV["CARGO_HOME"]}/bin/cargo" : nil
+        # Fallback: Check for Homebrew-managed Cargo (if applicable)
+      unless cargo_path
+        cargo_path = "#{HOMEBREW_PREFIX}/opt/rust/bin/cargo" if OS.mac?
+      end
 
-  # Fallback: Check for Homebrew-managed Cargo (if applicable)
-  unless cargo_path
-    cargo_path = "#{HOMEBREW_PREFIX}/opt/rust/bin/cargo" if OS.mac?
-  end
       potential_cargo_paths = [
         "/home/#{ENV['USER']}/.cargo/bin", # Common user-level installation 
         "#{HOMEBREW_PREFIX}/opt/rust/bin",  # Possible Homebrew Rust location
@@ -34,7 +34,7 @@ class Up < Formula
       up_path_gen_dir = formula_path.dirname.join("up-path-gen")
       cd up_path_gen_dir do
         system "rustup", "override", "set", "stable"
-        system "cargo", "build", "--release"
+        system "cargo", "build", "--release" "-vv"
         lib.install "target/release/up-path-gen"
       end
 
