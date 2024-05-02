@@ -30,7 +30,8 @@ class Up < Formula
         EOS
       end
 
-      ENV["PATH"] = "#{cargo_path}:#{ENV['PATH']}"  
+      ENV["PATH"] = "#{cargo_path}:#{ENV['PATH']}"
+      puts ENV["PATH"]
 
       formula_path = Pathname.new(__FILE__).expand_path
       up_path_gen_dir = formula_path.dirname.join("up-path-gen")
