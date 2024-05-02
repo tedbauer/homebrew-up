@@ -20,7 +20,7 @@ class Up < Formula
       ]
 
       cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }
-      put "cargo path is"
+      puts "cargo path is"
       puts cargo_path
       unless cargo_path
         odie <<~EOS 
