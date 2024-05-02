@@ -48,9 +48,9 @@ class Up < Formula
 
       ENV["BINARY_PATH"] = "#{lib}/up-path-gen"
 
-      cd formula_path.dirname do
-        lib.install "up.sh"
-      end
+      # cd formula_path.dirname do
+        # lib.install "up.sh"
+      # end
     end
     
     def caveats; <<~EOS
