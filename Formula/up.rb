@@ -46,9 +46,9 @@ class Up < Formula
       ENV["BINARY_PATH"] = "#{lib}/up-path-gen"
     end
 
+    def caveats;<<~EOS
     formula_path = Pathname.new(__FILE__).expand_path
 
-    def caveats;<<~EOS
     To use the 'up' command, source this script in your shell profile:
       export BINARY_PATH=$(brew --prefix)/lib/up-path-gen && source #{formula_path}/up.sh
     EOS
