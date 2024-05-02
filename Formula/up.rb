@@ -3,8 +3,6 @@ class Up < Formula
     homepage "https://github.com/tedbauer/up" 
     url "https://github.com/tedbauer/up/"
     version "0.1.0"
-
-    formula_path = Pathname.new(__FILE__).expand_path
   
     def install
       # Check for CARGO_HOME environment variable
@@ -36,6 +34,7 @@ class Up < Formula
       sub_dir_name = "up-build"
       build_dir = tmp_dir_path.join(sub_dir_name)
 
+      formula_path = Pathname.new(__FILE__).expand_path
       up_path_gen_dir = formula_path.dirname.join("up-path-gen")
       cd up_path_gen_dir do
         system "rustup", "override", "set", "stable"
@@ -47,7 +46,9 @@ class Up < Formula
       ENV["BINARY_PATH"] = "#{lib}/up-path-gen"
     end
 
-    def caveats; <<~EOS
+    formula_path = Pathname.new(__FILE__).expand_path
+
+    def caveats;<<~EOS
     To use the 'up' command, source this script in your shell profile:
       export BINARY_PATH=$(brew --prefix)/lib/up-path-gen && source #{formula_path}/up.sh
     EOS
