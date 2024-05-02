@@ -47,7 +47,7 @@ class Up < Formula
     end
 
     def caveats;
-    formula_path = Pathname.new(__FILE__).expand_path
+    formula_path = Pathname.new(__FILE__).expand_path.dirname
 
     <<~EOS
     To use the 'up' command, source this script in your shell profile:
