@@ -33,7 +33,9 @@ class Up < Formula
       ENV["PATH"] = "#{cargo_path}:#{ENV['PATH']}"
       puts ENV["PATH"]
 
-      build_dir = Dir.tmpdir.join("up-build")
+      tmp_dir_path = Pathname.new("/private/tmp")
+      sub_dir_name = "up-build"
+      build_dir = tmp_dir_path.join(sub_dir_name)
 
       formula_path = Pathname.new(__FILE__).expand_path
       up_path_gen_dir = formula_path.dirname.join("up-path-gen")
