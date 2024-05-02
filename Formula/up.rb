@@ -43,7 +43,7 @@ class Up < Formula
         system "rustup", "override", "set", "stable"
         ENV["CARGO_TARGET_DIR"] = build_dir
         system "cargo", "build", "--release"
-        lib.install build_dir/"target/release/up-path-gen"
+        lib.install build_dir/"release/up-path-gen"
       end
 
       ENV["BINARY_PATH"] = "#{lib}/up-path-gen"
