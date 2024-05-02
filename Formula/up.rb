@@ -19,7 +19,9 @@ class Up < Formula
         "/Users/#{ENV['USER']}/.cargo/bin" # Common installation on OSX
       ]
 
-      cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }        
+      cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }
+      put "cargo path is"
+      puts cargo_path
       unless cargo_path
         odie <<~EOS 
           Cargo (the Rust package manager) is required to install 'up'.
