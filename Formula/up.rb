@@ -52,10 +52,10 @@ class Up < Formula
         system "cp", "-v", File.expand_path("up.sh", __dir__), "/opt/homebrew/lib/up.sh"
       end
     end
-    
+
     def caveats; <<~EOS
     To use the 'up' command, source this script in your shell profile:
-      export BINARY_PATH=$(brew --prefix)/lib/up-path-gen && source #{HOMEBREW_PREFIX}/lib/up.sh
+      export BINARY_PATH=$(brew --prefix)/lib/up-path-gen && source #{buildpath}/up.sh
     EOS
     end
 
