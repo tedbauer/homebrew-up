@@ -20,8 +20,6 @@ class Up < Formula
       ]
 
       cargo_path = potential_cargo_paths.find { |path| File.exist? "#{path}/cargo" }
-      puts "cargo path is"
-      puts cargo_path
       unless cargo_path
         odie <<~EOS 
           Cargo (the Rust package manager) is required to install 'up'.
@@ -31,7 +29,6 @@ class Up < Formula
       end
 
       ENV["PATH"] = "#{cargo_path}:#{ENV['PATH']}"
-      puts ENV["PATH"]
 
       tmp_dir_path = Pathname.new("/private/tmp")
       sub_dir_name = "up-build"
@@ -47,10 +44,6 @@ class Up < Formula
       end
 
       ENV["BINARY_PATH"] = "#{lib}/up-path-gen"
-
-      cd formula_path.dirname do
-        system "cp", "-v", File.expand_path("up.sh", __dir__), "/opt/homebrew/lib/up.sh"
-      end
     end
 
     def caveats; <<~EOS
