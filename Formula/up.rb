@@ -49,7 +49,7 @@ class Up < Formula
       ENV["BINARY_PATH"] = "#{lib}/up-path-gen"
 
       cd formula_path.dirname do
-        libexec.install File.expand_path("up.sh", __dir__)
+        system "cp", File.expand_path("up.sh", __dir__), "/usr/local/lib/up.sh"
       end
     end
     
