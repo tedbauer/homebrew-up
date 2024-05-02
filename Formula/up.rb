@@ -51,7 +51,7 @@ class Up < Formula
 
     <<~EOS
     To use the 'up' command, source this script in your shell profile:
-      export BINARY_PATH=$(brew --prefix)/lib/up-path-gen && source formula_pathup.sh
+      export BINARY_PATH=$(brew --prefix)/lib/up-path-gen && source #{formula_path}/up.sh
     EOS
     end
 
