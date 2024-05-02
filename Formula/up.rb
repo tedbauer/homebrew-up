@@ -33,12 +33,14 @@ class Up < Formula
       ENV["PATH"] = "#{cargo_path}:#{ENV['PATH']}"
       puts ENV["PATH"]
 
+      build_dir = Dir.tmpdir.join("up-build")
+
       formula_path = Pathname.new(__FILE__).expand_path
       up_path_gen_dir = formula_path.dirname.join("up-path-gen")
       cd up_path_gen_dir do
         system "rustup", "override", "set", "stable"
-        system "cargo", "build", "--release", "-vv"
-        lib.install "target/release/up-path-gen"
+        system "cargo", "build", "--release", "--target", build_dir
+        lib.install build_dir/"target/release/up-path-gen"
       end
 
       ENV["BINARY_PATH"] = "#{lib}/up-path-gen"
