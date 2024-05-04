@@ -16,7 +16,7 @@ up() {
   target="$1"
   full_command="$BINARY_PATH $target"
   
-  target_path=$($full_command)
+  target_path=$(eval "$full_command")
   cd "$target_path"
 }
 
