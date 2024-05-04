@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# binary_path="$(brew --prefix)/lib/up-path-gen"
-
 up_completion() {
     completions=$($BINARY_PATH --complete $COMP_CWORD $COMP_LINE)
     COMPREPLY=($completions)
