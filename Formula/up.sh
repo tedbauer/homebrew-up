@@ -20,6 +20,6 @@ up() {
   cd "$target_path"
 }
 
-if [ "$0" = "-bash" ]; then
+if [ "$0" = "bash" ]; then
   complete -F up_completion up
 fi
