@@ -12,3 +12,5 @@ With [Homebrew](https://brew.sh/):
 brew tap tedbauer/homebrew-up
 brew install tedbauer/homebrew-up/up
 ```
+
+See more info on the [blog post](https://tedbauer.github.io/posts/post1.html).
