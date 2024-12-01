@@ -7,8 +7,8 @@ up_completion() {
 
 up() {
   if [ $# -eq 0 ]; then
-    echo "Usage: up <path|path-prefix>"
-    return 1
+    cd ..
+    return 0
   fi
 
   target="$1"
